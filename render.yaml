@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: capycode-sandbox-api
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: E2B_API_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
