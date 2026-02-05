@@ -37,6 +37,8 @@ app.use(express.json({ limit: '50mb' }));
 
 const E2B_API_KEY = process.env.E2B_API_KEY;
 
+console.log('[E2B] API Key configured:', !!E2B_API_KEY);
+
 // Health check
 app.get('/', (req, res) => {
   res.json({ 
@@ -47,7 +49,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'healthy' });
+  res.json({ status: 'healthy', e2bConfigured: !!E2B_API_KEY });
 });
 
 // Create sandbox
